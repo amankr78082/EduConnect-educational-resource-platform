@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>EduConnect Frontend Backend Viva Notes</title>
+  <style>
+    @page { size: A4; margin: 15mm; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #111827; line-height: 1.45; }
+    h1 { font-size: 31px; color: #0b1f44; margin: 0 0 8px; }
+    h2 { font-size: 20px; color: #0b1f44; margin: 24px 0 9px; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px; }
+    h3 { font-size: 15px; color: #111827; margin: 14px 0 6px; }
+    p { margin: 0 0 8px; }
+    ul, ol { margin: 6px 0 12px 20px; padding: 0; }
+    li { margin: 4px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 11px; margin: 9px 0 16px; }
+    th { background: #0b1f44; color: white; text-align: left; padding: 7px; }
+    td { border: 1px solid #e5e7eb; padding: 6px; vertical-align: top; }
+    tbody tr:nth-child(even) td { background: #f9fafb; }
+    pre { background: #f3f4f6; border-radius: 8px; padding: 10px; font-family: Consolas, monospace; font-size: 10.5px; white-space: pre-wrap; }
+    code { background: #f3f4f6; padding: 1px 4px; border-radius: 4px; font-family: Consolas, monospace; }
+    .cover { min-height: 91vh; display: flex; flex-direction: column; justify-content: center; page-break-after: always; }
+    .logo { width: 68px; height: 68px; border-radius: 18px; background: linear-gradient(135deg,#1d4ed8,#7c3aed); color: white; display: grid; place-items: center; font-weight: 800; font-size: 28px; margin-bottom: 20px; }
+    .subtitle { font-size: 16px; color: #4b5563; max-width: 680px; }
+    .pill { display: inline-block; padding: 5px 10px; border-radius: 999px; background: #eef2ff; color: #3730a3; font-size: 12px; font-weight: 700; margin: 4px 4px 0 0; }
+    .box { border-left: 4px solid #2563eb; background: #f8fbff; padding: 10px 12px; margin: 9px 0 14px; }
+    .warn { border-left-color: #f59e0b; background: #fffbeb; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 10px; break-inside: avoid; }
+    .small { font-size: 11px; color: #6b7280; }
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <div class="logo">EC</div>
+    <h1>EduConnect Frontend, Backend & Viva Questions</h1>
+    <p class="subtitle">Detailed viva notes for explaining frontend-backend connection, your role, teammate role, challenges, workflows, problem statement, and common project questions with EduConnect examples.</p>
+    <div style="margin-top: 14px;">
+      <span class="pill">Frontend</span>
+      <span class="pill">Backend</span>
+      <span class="pill">Database</span>
+      <span class="pill">Roles</span>
+      <span class="pill">Challenges</span>
+      <span class="pill">Viva Q&A</span>
+    </div>
+    <p class="small" style="margin-top: 24px;">Prepared for EduConnect major project viva.</p>
+  </section>
+
+  <h2>1. Problem Statement</h2>
+  <p>University students often face difficulty finding syllabus-based academic resources in one place. Notes, videos, PYQs, quizzes, and live class links are usually scattered across WhatsApp groups, Telegram channels, random PDFs, and YouTube playlists. This creates confusion and wastes students' time.</p>
+  <p>Teachers also need a structured platform to upload subject-wise content, and admins need a proper system to manage academic hierarchy, teachers, subscriptions, approvals, and student access.</p>
+  <div class="box">
+    <strong>Problem Statement:</strong> To develop a role-based ERP + LMS platform that provides centralized, syllabus-based academic resources and manages students, teachers, content, quizzes, subscriptions, and academic hierarchy in a structured way.
+  </div>
+
+  <h2>2. Proposed Solution</h2>
+  <p>EduConnect solves this problem by organizing learning resources through academic hierarchy:</p>
+  <div class="box">University -> Course -> Branch -> Scheme -> Semester -> Subject -> Unit -> Topic -> Notes / Videos / PYQs / Quizzes / Live Classes</div>
+  <p>The system has four roles: student, teacher, admin, and maintenance. Each role has different access and responsibilities.</p>
+
+  <h2>3. Frontend To Backend Connection</h2>
+  <p>The frontend is developed using React and TypeScript. The backend is developed using Node.js. The database is MySQL. React components do not directly connect to MySQL. Instead, they use a client wrapper.</p>
+  <div class="box">
+    React Component -> <code>src/integrations/mysql/client.ts</code> -> <code>server/mysql-api.mjs</code> -> MySQL Database -> API Response -> React UI Update
+  </div>
+  <p>This architecture separates the UI from database logic. It improves maintainability because frontend components only call reusable client methods such as select, insert, update, and delete.</p>
+
+  <h3>Example Frontend Call</h3>
+  <pre>const { data, error } = await mysqlClient
+  .from("subjects")
+  .select("*")
+  .eq("semester", 1);</pre>
+  <p>This code sends a request to backend. The backend fetches matching subjects from MySQL and sends the result back to React.</p>
+
+  <h2>4. Technology Stack</h2>
+  <table>
+    <thead><tr><th>Layer</th><th>Technology</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td>Frontend</td><td>React, TypeScript, Vite</td><td>Dynamic UI, reusable components, fast development.</td></tr>
+      <tr><td>Styling</td><td>Tailwind CSS, shadcn/Radix UI</td><td>Responsive and modern user interface.</td></tr>
+      <tr><td>Routing</td><td>React Router DOM</td><td>Page navigation and protected routes.</td></tr>
+      <tr><td>Data Fetching</td><td>TanStack React Query</td><td>API data fetching and caching.</td></tr>
+      <tr><td>Backend</td><td>Node.js</td><td>API layer between frontend and database.</td></tr>
+      <tr><td>Database</td><td>MySQL</td><td>Stores users, roles, content, quizzes, subscriptions and hierarchy.</td></tr>
+      <tr><td>Icons/UI</td><td>Lucide React, Framer Motion</td><td>Icons and smooth UI animations.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>5. Roles And Responsibilities</h2>
+  <table>
+    <thead><tr><th>Role</th><th>Responsibilities</th><th>EduConnect Example</th></tr></thead>
+    <tbody>
+      <tr><td>Student</td><td>Access learning resources, quizzes, PYQs, subscriptions, live classes and teacher chat.</td><td>Student opens syllabus, attempts quiz, downloads notes.</td></tr>
+      <tr><td>Teacher</td><td>Upload notes, videos, PYQs, create quizzes and schedule live classes for assigned subjects.</td><td>Teacher uploads DBMS notes only if admin assigned DBMS.</td></tr>
+      <tr><td>Admin</td><td>Manage hierarchy, approve teachers, assign subjects, approve content, verify payments.</td><td>Admin assigns MCA 201 DBMS to a teacher.</td></tr>
+      <tr><td>Maintenance</td><td>Raise academic hierarchy update requests for admin approval.</td><td>Maintenance requests new 2025 scheme addition.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>6. Your Role And Teammate Role</h2>
+  <div class="two">
+    <div class="card">
+      <h3>Your Role</h3>
+      <ul>
+        <li>Frontend pages and components.</li>
+        <li>Backend/API integration.</li>
+        <li>Role-based dashboards.</li>
+        <li>Quiz flow, timer, answer saving, leaderboard.</li>
+        <li>Subscription and payment screenshot workflow.</li>
+        <li>Teacher upload and admin approval UI integration.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Teammate Role</h3>
+      <ul>
+        <li>MySQL database design.</li>
+        <li>Table creation and relationships.</li>
+        <li>Data insertion and seed data.</li>
+        <li>Maintaining syllabus, quiz, and academic records.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>7. Challenges Faced And Solutions</h2>
+  <table>
+    <thead><tr><th>Challenge</th><th>Problem</th><th>Solution</th></tr></thead>
+    <tbody>
+      <tr><td>Frontend-backend integration</td><td>React could not directly use MySQL.</td><td>Used Node.js API and mysqlClient wrapper.</td></tr>
+      <tr><td>Role-based access</td><td>Different users needed different permissions.</td><td>Used user_roles table and RoleRoute.tsx.</td></tr>
+      <tr><td>Quiz answer saving</td><td>Answers could duplicate or submit incorrectly.</td><td>Saved final answers on submit into student_answers.</td></tr>
+      <tr><td>Quiz timer</td><td>Timer needed to work per question.</td><td>Implemented 20 seconds per question with auto-next and auto-submit.</td></tr>
+      <tr><td>Subscription access</td><td>Free and premium access needed separation.</td><td>Used semester-wise subscriptions and admin approval.</td></tr>
+      <tr><td>Teacher restrictions</td><td>Teachers should not upload for all subjects.</td><td>Used teacher_assignments table for subject-wise access.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>8. Important Database Tables</h2>
+  <table>
+    <thead><tr><th>Table</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>app_users</code></td><td>Stores login email and password.</td></tr>
+      <tr><td><code>profiles</code></td><td>Stores profile details such as name, phone, gender, semester.</td></tr>
+      <tr><td><code>user_roles</code></td><td>Stores student, teacher, admin, maintenance roles.</td></tr>
+      <tr><td><code>universities, courses, branches, schemes, subjects, units, syllabus_topics</code></td><td>Stores academic hierarchy.</td></tr>
+      <tr><td><code>content</code></td><td>Stores notes, videos, PDFs, topic mapping and approval status.</td></tr>
+      <tr><td><code>teacher_assignments</code></td><td>Stores teacher-subject mapping.</td></tr>
+      <tr><td><code>quizzes, questions, options</code></td><td>Stores quiz structure.</td></tr>
+      <tr><td><code>quiz_attempts, student_answers</code></td><td>Stores quiz result and each selected answer.</td></tr>
+      <tr><td><code>subscriptions, payments</code></td><td>Stores premium request and payment proof.</td></tr>
+      <tr><td><code>hierarchy_requests</code></td><td>Stores maintenance requests.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>9. Common Viva Questions With Detailed Answers</h2>
+  
+    <h3>1. How did you connect frontend to backend?</h3>
+    <p>In EduConnect, the frontend is built using React and TypeScript, and the backend is built using Node.js with MySQL. The React components do not directly connect to MySQL. Instead, they use a frontend API client wrapper named src/integrations/mysql/client.ts. This wrapper sends requests to the Node.js backend file server/mysql-api.mjs. The backend performs the required MySQL operation and returns the response to the frontend. This keeps frontend and database separated and makes the project easier to maintain.</p>
+    <div class="box"><strong>EduConnect Example:</strong> Example flow: React component -> mysqlClient wrapper -> Node.js backend API -> MySQL database -> API response -> React UI update.</div>
+  
+    <h3>2. What was your role in the project?</h3>
+    <p>My role was mainly frontend development and backend/API integration. I worked on React pages, role-based dashboards, syllabus navigation, quiz flow, subscription request workflow, teacher upload workflow, admin approval screens, and connecting frontend components with backend API data.</p>
+    <div class="box"><strong>EduConnect Example:</strong> For example, I worked on quiz UI, quiz timer, answer submission, subscription page, dashboards, and role-based routing.</div>
+  
+    <h3>3. What was your teammate's role?</h3>
+    <p>My teammate mainly worked on the database part. This includes MySQL table design, creating relationships, inserting initial data, and maintaining database structure for users, roles, academic hierarchy, quizzes, payments, and content.</p>
+    <div class="box"><strong>EduConnect Example:</strong> For example, database tables like subjects, units, questions, options, subscriptions, and student_answers are part of the database layer.</div>
+  
+    <h3>4. Why did you use React?</h3>
+    <p>React is useful for building dynamic and reusable UI components. EduConnect has multiple interactive screens such as dashboards, syllabus navigation, quiz timer, subscription form, admin panels, and teacher upload screens. React makes it easier to split these into reusable components.</p>
+    <div class="box"><strong>EduConnect Example:</strong> For example, QuizBrowser displays quiz cards, TakeQuiz handles quiz attempt, and CoursePlayer handles notes/video player.</div>
+  
+    <h3>5. Why did you use Node.js backend?</h3>
+    <p>Node.js works well as a lightweight API layer between React and MySQL. It handles requests from frontend, runs database queries, manages upload paths, and sends JSON responses back to React.</p>
+    <div class="box"><strong>EduConnect Example:</strong> In EduConnect, server/mysql-api.mjs handles backend API operations.</div>
+  
+    <h3>6. Why did you use MySQL?</h3>
+    <p>MySQL is suitable because EduConnect has structured relational data. Users, roles, universities, courses, subjects, units, teachers, quizzes, questions, subscriptions, and payments are related to each other. A relational database is appropriate for this type of project.</p>
+    <div class="box"><strong>EduConnect Example:</strong> For example, one subject has many units, one quiz has many questions, and one student quiz attempt has many student answers.</div>
+  
+    <h3>7. What is role-based access control in EduConnect?</h3>
+    <p>Role-based access control means each user can access only the features allowed for their role. EduConnect has student, teacher, admin, and maintenance roles. The frontend protects routes using RoleRoute.tsx, and roles are stored in the user_roles table.</p>
+    <div class="box"><strong>EduConnect Example:</strong> Example: student cannot access admin teacher assignment page; teacher can upload content only for assigned subjects; admin can approve subscriptions.</div>
+  
+    <h3>8. How does quiz submission work?</h3>
+    <p>When a student starts a quiz, the frontend loads quiz questions and options. The student selects answers. On submit or auto-submit, the system calculates score, creates/updates a quiz_attempts record, and saves each selected answer in student_answers.</p>
+    <div class="box"><strong>EduConnect Example:</strong> Tables used: quizzes, questions, options, quiz_attempts, student_answers.</div>
+  
+    <h3>9. How does the quiz timer work?</h3>
+    <p>The quiz timer is implemented in the TakeQuiz component. Each question gets 20 seconds. If time becomes zero, the system automatically moves to the next question. If it is the last question, the quiz auto-submits.</p>
+    <div class="box"><strong>EduConnect Example:</strong> This is an example of application-level algorithm logic used in EduConnect.</div>
+  
+    <h3>10. How does subscription work?</h3>
+    <p>Student selects a semester premium plan, scans QR, pays, uploads payment screenshot and transaction ID. The system creates subscription and payment records with pending status. Admin verifies the screenshot and activates premium access.</p>
+    <div class="box"><strong>EduConnect Example:</strong> Tables used: subscriptions and payments.</div>
+  
+    <h3>11. How does teacher assignment work?</h3>
+    <p>Admin approves teacher access and assigns teachers to subjects. Teacher can only manage assigned subjects. This prevents teachers from uploading content for unrelated subjects.</p>
+    <div class="box"><strong>EduConnect Example:</strong> Table used: teacher_assignments.</div>
+  
+    <h3>12. What is the maintenance role?</h3>
+    <p>Maintenance users help maintain academic structure but cannot directly publish critical changes. They raise requests for hierarchy changes, and admin reviews, approves, or rejects them.</p>
+    <div class="box"><strong>EduConnect Example:</strong> Table used: hierarchy_requests.</div>
+  
+    <h3>13. What challenges did you face?</h3>
+    <p>Major challenges included frontend-backend integration, role-based access, quiz answer saving, timer logic, subscription proof workflow, and ensuring teachers only access assigned subjects.</p>
+    <div class="box"><strong>EduConnect Example:</strong> For example, quiz answers were initially saving incorrectly, so the final logic saves answers cleanly on submit in student_answers.</div>
+  
+    <h3>14. What is the most important feature?</h3>
+    <p>The most important feature is syllabus-based structured learning with role-based control. EduConnect organizes resources according to the university academic hierarchy instead of showing random content.</p>
+    <div class="box"><strong>EduConnect Example:</strong> Hierarchy: University -> Course -> Branch -> Scheme -> Semester -> Subject -> Unit -> Topic.</div>
+  
+    <h3>15. What future improvements can be added?</h3>
+    <p>Future improvements include JWT authentication, online payment gateway, cloud file storage, notification system, AI-based doubt solving, better analytics, and mobile app support.</p>
+    <div class="box"><strong>EduConnect Example:</strong> These improvements would make the project more scalable and production-ready.</div>
+  
+
+  <h2>10. Important Algorithms / Logic</h2>
+  <h3>Role Checking Algorithm</h3>
+  <pre>Get logged-in user
+Fetch role from user_roles table
+If role is admin -> show admin dashboard
+If role is teacher -> show teacher dashboard
+If role is student -> show student dashboard
+If role is maintenance -> show maintenance dashboard</pre>
+
+  <h3>Quiz Scoring Algorithm</h3>
+  <pre>For each question:
+  Get selected option
+  Find correct option
+  If selected option equals correct option:
+      Add marks
+      Save answer as correct
+  Else:
+      Save answer as wrong
+Store final score in quiz_attempts
+Store each answer in student_answers</pre>
+
+  <h3>Subscription Access Algorithm</h3>
+  <pre>If student has active premium subscription for semester:
+    Unlock full content
+Else:
+    Show free preview content only</pre>
+
+  <h3>Leaderboard Algorithm</h3>
+  <pre>Fetch completed quiz attempts
+Group attempts by student
+Calculate percentage score
+Sort by highest percentage
+Display rank</pre>
+
+  <h2>11. Best Final Viva Explanation</h2>
+  <div class="box">
+    EduConnect is a role-based ERP + LMS platform developed using React, TypeScript, Node.js, and MySQL. It solves the problem of scattered university learning resources by organizing notes, videos, PYQs, quizzes, and live classes according to academic syllabus hierarchy. The project has four roles: student, teacher, admin, and maintenance. Students access structured learning, teachers upload assigned-subject content, admins manage hierarchy and approvals, and maintenance users raise academic update requests. I worked on frontend and backend integration, while my teammate worked on database design and data insertion.
+  </div>
+</body>
+</html>

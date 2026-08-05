@@ -1,0 +1,300 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1250" viewBox="0 0 1800 1250">
+  <defs>
+    <style>
+      .bg{fill:#f7f9ff}
+      .title{font:700 42px Arial, Helvetica, sans-serif;fill:#081c3a}
+      .subtitle{font:500 18px Arial, Helvetica, sans-serif;fill:#53637c}
+      .group-title{font:700 20px Arial, Helvetica, sans-serif;fill:#172554}
+      .entity-title{font:700 17px Arial, Helvetica, sans-serif;fill:#ffffff}
+      .field{font:500 14px Arial, Helvetica, sans-serif;fill:#24324a}
+      .key{font:700 14px Arial, Helvetica, sans-serif;fill:#0f766e}
+      .fk{font:700 14px Arial, Helvetica, sans-serif;fill:#7c3aed}
+      .note{font:500 13px Arial, Helvetica, sans-serif;fill:#64748b}
+      .box{fill:#ffffff;stroke:#d7def0;stroke-width:1.5}
+      .head-blue{fill:#1d4ed8}
+      .head-purple{fill:#7c3aed}
+      .head-teal{fill:#0f766e}
+      .head-orange{fill:#ea580c}
+      .head-slate{fill:#334155}
+      .group{fill:#ffffff;stroke:#cfd8ee;stroke-width:2;rx:24}
+      .rel{stroke:#64748b;stroke-width:2;fill:none;marker-end:url(#arrow)}
+      .rel-strong{stroke:#2563eb;stroke-width:2.6;fill:none;marker-end:url(#arrowBlue)}
+      .rel-soft{stroke:#94a3b8;stroke-width:1.8;fill:none;stroke-dasharray:7 7;marker-end:url(#arrow)}
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1800" height="1250"/>
+  <text x="70" y="70" class="title">EduConnect ERP + LMS - ER Diagram</text>
+  <text x="72" y="104" class="subtitle">Multi-university academic hierarchy, role-based users, teacher content workflow, PYQs, quizzes, live classes and subscriptions</text>
+
+  <!-- Academic group -->
+  <rect x="45" y="145" width="520" height="860" class="group"/>
+  <text x="75" y="185" class="group-title">Academic Hierarchy</text>
+
+  <g transform="translate(75 215)">
+    <rect class="box" width="440" height="88" rx="10"/>
+    <rect class="head-blue" width="440" height="32" rx="10"/>
+    <text x="16" y="22" class="entity-title">universities</text>
+    <text x="16" y="54" class="key">PK id</text>
+    <text x="16" y="76" class="field">name, short_name</text>
+  </g>
+
+  <g transform="translate(75 335)">
+    <rect class="box" width="440" height="100" rx="10"/>
+    <rect class="head-blue" width="440" height="32" rx="10"/>
+    <text x="16" y="22" class="entity-title">courses</text>
+    <text x="16" y="54" class="key">PK id</text>
+    <text x="16" y="76" class="fk">FK university_id</text>
+    <text x="225" y="76" class="field">name, short_name</text>
+  </g>
+
+  <g transform="translate(75 470)">
+    <rect class="box" width="440" height="100" rx="10"/>
+    <rect class="head-blue" width="440" height="32" rx="10"/>
+    <text x="16" y="22" class="entity-title">branches / programs</text>
+    <text x="16" y="54" class="key">PK id</text>
+    <text x="16" y="76" class="fk">FK course_id</text>
+    <text x="205" y="76" class="field">name, code</text>
+  </g>
+
+  <g transform="translate(75 605)">
+    <rect class="box" width="440" height="100" rx="10"/>
+    <rect class="head-blue" width="440" height="32" rx="10"/>
+    <text x="16" y="22" class="entity-title">schemes</text>
+    <text x="16" y="54" class="key">PK id</text>
+    <text x="16" y="76" class="fk">FK branch_id</text>
+    <text x="205" y="76" class="field">name, year</text>
+  </g>
+
+  <g transform="translate(75 740)">
+    <rect class="box" width="440" height="112" rx="10"/>
+    <rect class="head-blue" width="440" height="32" rx="10"/>
+    <text x="16" y="22" class="entity-title">subjects</text>
+    <text x="16" y="54" class="key">PK id</text>
+    <text x="16" y="76" class="fk">FK scheme_id</text>
+    <text x="205" y="76" class="field">name, code</text>
+    <text x="16" y="98" class="field">semester, description, is_free</text>
+  </g>
+
+  <g transform="translate(75 885)">
+    <rect class="box" width="205" height="92" rx="10"/>
+    <rect class="head-blue" width="205" height="32" rx="10"/>
+    <text x="14" y="22" class="entity-title">units</text>
+    <text x="14" y="54" class="key">PK id</text>
+    <text x="14" y="76" class="fk">FK subject_id</text>
+  </g>
+
+  <g transform="translate(310 885)">
+    <rect class="box" width="205" height="92" rx="10"/>
+    <rect class="head-blue" width="205" height="32" rx="10"/>
+    <text x="14" y="22" class="entity-title">syllabus_topics</text>
+    <text x="14" y="54" class="key">PK id</text>
+    <text x="14" y="76" class="fk">FK unit_id</text>
+  </g>
+
+  <!-- User group -->
+  <rect x="625" y="145" width="510" height="410" class="group"/>
+  <text x="655" y="185" class="group-title">Users, RBAC and Enrollment</text>
+
+  <g transform="translate(655 215)">
+    <rect class="box" width="210" height="100" rx="10"/>
+    <rect class="head-purple" width="210" height="32" rx="10"/>
+    <text x="14" y="22" class="entity-title">app_users</text>
+    <text x="14" y="54" class="key">PK id</text>
+    <text x="14" y="76" class="field">email, password</text>
+  </g>
+
+  <g transform="translate(895 215)">
+    <rect class="box" width="210" height="100" rx="10"/>
+    <rect class="head-purple" width="210" height="32" rx="10"/>
+    <text x="14" y="22" class="entity-title">profiles</text>
+    <text x="14" y="54" class="key">PK id</text>
+    <text x="14" y="76" class="fk">FK user_id</text>
+  </g>
+
+  <g transform="translate(655 350)">
+    <rect class="box" width="210" height="100" rx="10"/>
+    <rect class="head-purple" width="210" height="32" rx="10"/>
+    <text x="14" y="22" class="entity-title">user_roles</text>
+    <text x="14" y="54" class="key">PK id</text>
+    <text x="14" y="76" class="field">role: admin/teacher/student</text>
+  </g>
+
+  <g transform="translate(895 350)">
+    <rect class="box" width="210" height="112" rx="10"/>
+    <rect class="head-purple" width="210" height="32" rx="10"/>
+    <text x="14" y="22" class="entity-title">course_enrollments</text>
+    <text x="14" y="54" class="key">PK id</text>
+    <text x="14" y="76" class="fk">FK student_id</text>
+    <text x="14" y="98" class="fk">FK subject_id, progress</text>
+  </g>
+
+  <!-- Teacher workflow -->
+  <rect x="625" y="590" width="510" height="415" class="group"/>
+  <text x="655" y="630" class="group-title">Teacher Content Workflow</text>
+
+  <g transform="translate(655 660)">
+    <rect class="box" width="450" height="118" rx="10"/>
+    <rect class="head-teal" width="450" height="32" rx="10"/>
+    <text x="16" y="22" class="entity-title">teacher_assignments</text>
+    <text x="16" y="54" class="key">PK id</text>
+    <text x="16" y="76" class="fk">FK teacher_id -> app_users.id</text>
+    <text x="16" y="98" class="fk">FK subject_id -> subjects.id, is_active</text>
+  </g>
+
+  <g transform="translate(655 810)">
+    <rect class="box" width="450" height="145" rx="10"/>
+    <rect class="head-teal" width="450" height="32" rx="10"/>
+    <text x="16" y="22" class="entity-title">content</text>
+    <text x="16" y="54" class="key">PK id</text>
+    <text x="16" y="76" class="fk">FK subject_id, unit_id, syllabus_topic_id</text>
+    <text x="16" y="98" class="field">content_type: notes / video / pdf</text>
+    <text x="16" y="120" class="field">file_url, video_url, notes_content, created_by</text>
+  </g>
+
+  <g transform="translate(655 982)">
+    <rect class="box" width="210" height="96" rx="10"/>
+    <rect class="head-teal" width="210" height="32" rx="10"/>
+    <text x="14" y="22" class="entity-title">content_topics</text>
+    <text x="14" y="54" class="key">PK id</text>
+    <text x="14" y="76" class="fk">FK content_id, page_number</text>
+  </g>
+
+  <g transform="translate(895 982)">
+    <rect class="box" width="210" height="96" rx="10"/>
+    <rect class="head-teal" width="210" height="32" rx="10"/>
+    <text x="14" y="22" class="entity-title">previous_papers</text>
+    <text x="14" y="54" class="key">PK id</text>
+    <text x="14" y="76" class="fk">FK subject_id, unit_id</text>
+  </g>
+
+  <!-- Engagement group -->
+  <rect x="1195" y="145" width="555" height="525" class="group"/>
+  <text x="1225" y="185" class="group-title">Student Activity and Interactive LMS</text>
+
+  <g transform="translate(1225 215)">
+    <rect class="box" width="230" height="100" rx="10"/>
+    <rect class="head-orange" width="230" height="32" rx="10"/>
+    <text x="14" y="22" class="entity-title">bookmarks</text>
+    <text x="14" y="54" class="key">PK id</text>
+    <text x="14" y="76" class="fk">FK user_id, content_id</text>
+  </g>
+
+  <g transform="translate(1485 215)">
+    <rect class="box" width="230" height="100" rx="10"/>
+    <rect class="head-orange" width="230" height="32" rx="10"/>
+    <text x="14" y="22" class="entity-title">content_views</text>
+    <text x="14" y="54" class="key">PK id</text>
+    <text x="14" y="76" class="fk">FK user_id, content_id</text>
+  </g>
+
+  <g transform="translate(1225 350)">
+    <rect class="box" width="230" height="112" rx="10"/>
+    <rect class="head-orange" width="230" height="32" rx="10"/>
+    <text x="14" y="22" class="entity-title">live_sessions</text>
+    <text x="14" y="54" class="key">PK id</text>
+    <text x="14" y="76" class="fk">FK subject_id, teacher_id</text>
+    <text x="14" y="98" class="field">meet_link, is_live</text>
+  </g>
+
+  <g transform="translate(1485 350)">
+    <rect class="box" width="230" height="112" rx="10"/>
+    <rect class="head-orange" width="230" height="32" rx="10"/>
+    <text x="14" y="22" class="entity-title">subscriptions</text>
+    <text x="14" y="54" class="key">PK id</text>
+    <text x="14" y="76" class="fk">FK user_id</text>
+    <text x="14" y="98" class="field">plan, status, payment</text>
+  </g>
+
+  <g transform="translate(1225 500)">
+    <rect class="box" width="230" height="100" rx="10"/>
+    <rect class="head-orange" width="230" height="32" rx="10"/>
+    <text x="14" y="22" class="entity-title">chat_threads</text>
+    <text x="14" y="54" class="key">PK id</text>
+    <text x="14" y="76" class="fk">FK user_id</text>
+  </g>
+
+  <g transform="translate(1485 500)">
+    <rect class="box" width="230" height="100" rx="10"/>
+    <rect class="head-orange" width="230" height="32" rx="10"/>
+    <text x="14" y="22" class="entity-title">chat_messages</text>
+    <text x="14" y="54" class="key">PK id</text>
+    <text x="14" y="76" class="fk">FK thread_id</text>
+  </g>
+
+  <!-- Quiz and governance -->
+  <rect x="1195" y="705" width="555" height="300" class="group"/>
+  <text x="1225" y="745" class="group-title">Quiz, Approval and Audit</text>
+
+  <g transform="translate(1225 775)">
+    <rect class="box" width="230" height="100" rx="10"/>
+    <rect class="head-slate" width="230" height="32" rx="10"/>
+    <text x="14" y="22" class="entity-title">quizzes</text>
+    <text x="14" y="54" class="key">PK id</text>
+    <text x="14" y="76" class="fk">FK subject_id, created_by</text>
+  </g>
+
+  <g transform="translate(1485 775)">
+    <rect class="box" width="230" height="100" rx="10"/>
+    <rect class="head-slate" width="230" height="32" rx="10"/>
+    <text x="14" y="22" class="entity-title">questions / options</text>
+    <text x="14" y="54" class="key">PK id</text>
+    <text x="14" y="76" class="fk">FK quiz_id, question_id</text>
+  </g>
+
+  <g transform="translate(1225 905)">
+    <rect class="box" width="230" height="100" rx="10"/>
+    <rect class="head-slate" width="230" height="32" rx="10"/>
+    <text x="14" y="22" class="entity-title">quiz_attempts</text>
+    <text x="14" y="54" class="key">PK id</text>
+    <text x="14" y="76" class="fk">FK quiz_id, student_id</text>
+  </g>
+
+  <g transform="translate(1485 905)">
+    <rect class="box" width="230" height="100" rx="10"/>
+    <rect class="head-slate" width="230" height="32" rx="10"/>
+    <text x="14" y="22" class="entity-title">requests / audit_logs</text>
+    <text x="14" y="54" class="key">PK id</text>
+    <text x="14" y="76" class="field">hierarchy, delete, audit</text>
+  </g>
+
+  <!-- Relationship lines -->
+  <path class="rel-strong" d="M295 303 L295 335"/>
+  <path class="rel-strong" d="M295 435 L295 470"/>
+  <path class="rel-strong" d="M295 570 L295 605"/>
+  <path class="rel-strong" d="M295 705 L295 740"/>
+  <path class="rel-strong" d="M260 852 L205 885"/>
+  <path class="rel-strong" d="M280 930 L310 930"/>
+
+  <path class="rel" d="M865 265 L895 265"/>
+  <path class="rel" d="M760 315 L760 350"/>
+  <path class="rel" d="M865 400 L895 400"/>
+  <path class="rel" d="M515 798 C585 798 585 718 655 718"/>
+  <path class="rel" d="M865 265 C885 265 885 685 655 718"/>
+  <path class="rel-strong" d="M880 778 L880 810"/>
+  <path class="rel" d="M515 798 C585 820 590 870 655 870"/>
+  <path class="rel" d="M515 930 C585 930 590 870 655 870"/>
+  <path class="rel" d="M865 1030 L895 1030"/>
+
+  <path class="rel-soft" d="M1105 870 C1155 870 1160 265 1225 265"/>
+  <path class="rel-soft" d="M1105 870 C1165 870 1410 265 1485 265"/>
+  <path class="rel-soft" d="M1105 718 C1165 718 1165 405 1225 405"/>
+  <path class="rel-soft" d="M1105 400 C1165 400 1425 405 1485 405"/>
+  <path class="rel-soft" d="M1455 550 L1485 550"/>
+  <path class="rel-soft" d="M515 798 C610 760 1130 825 1225 825"/>
+  <path class="rel-soft" d="M1455 825 L1485 825"/>
+  <path class="rel-soft" d="M1455 955 L1485 955"/>
+
+  <!-- Legend -->
+  <rect x="70" y="1060" width="1660" height="130" rx="18" fill="#ffffff" stroke="#d7def0" stroke-width="1.5"/>
+  <text x="100" y="1100" class="group-title">Legend and Project Flow</text>
+  <text x="100" y="1130" class="note">PK = Primary Key, FK = Foreign Key. Main academic flow: University -> Course -> Program/Branch -> Scheme -> Subject -> Unit -> Topic.</text>
+  <text x="100" y="1158" class="note">Admin assigns teachers subject-wise. Teachers upload notes, PDFs, videos and PYQs. Students access mapped content, live classes, quizzes and progress features.</text>
+  <text x="100" y="1186" class="note">Approval/governance modules include hierarchy requests, delete requests, subscriptions and audit logs for ERP-level control.</text>
+</svg>

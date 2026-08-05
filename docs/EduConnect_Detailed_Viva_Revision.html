@@ -1,0 +1,274 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>EduConnect Detailed Viva Revision</title>
+  <style>
+    @page { size: A4; margin: 15mm; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; color: #111827; line-height: 1.45; }
+    h1 { font-size: 31px; color: #0b1f44; margin: 0 0 8px; }
+    h2 { font-size: 20px; color: #0b1f44; margin: 24px 0 9px; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px; }
+    h3 { font-size: 15px; color: #111827; margin: 14px 0 6px; }
+    p { margin: 0 0 8px; }
+    ul, ol { margin: 6px 0 12px 20px; padding: 0; }
+    li { margin: 4px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 11px; margin: 9px 0 16px; }
+    th { background: #0b1f44; color: white; text-align: left; padding: 7px; }
+    td { border: 1px solid #e5e7eb; padding: 6px; vertical-align: top; }
+    tbody tr:nth-child(even) td { background: #f9fafb; }
+    pre { background: #f3f4f6; border-radius: 8px; padding: 10px; font-family: Consolas, monospace; font-size: 10.5px; white-space: pre-wrap; }
+    code { background: #f3f4f6; padding: 1px 4px; border-radius: 4px; font-family: Consolas, monospace; }
+    .cover { min-height: 91vh; display: flex; flex-direction: column; justify-content: center; page-break-after: always; }
+    .logo { width: 68px; height: 68px; border-radius: 18px; background: linear-gradient(135deg,#1d4ed8,#7c3aed); color: white; display: grid; place-items: center; font-weight: 800; font-size: 28px; margin-bottom: 20px; }
+    .subtitle { font-size: 16px; color: #4b5563; max-width: 680px; }
+    .pill { display: inline-block; padding: 5px 10px; border-radius: 999px; background: #eef2ff; color: #3730a3; font-size: 12px; font-weight: 700; margin: 4px 4px 0 0; }
+    .box { border-left: 4px solid #2563eb; background: #f8fbff; padding: 10px 12px; margin: 9px 0 14px; }
+    .warn { border-left-color: #f59e0b; background: #fffbeb; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 10px; break-inside: avoid; }
+    .small { font-size: 11px; color: #6b7280; }
+  </style>
+</head>
+<body>
+  <section class="cover">
+    <div class="logo">EC</div>
+    <h1>EduConnect Detailed Viva Revision</h1>
+    <p class="subtitle">Fully explained last-minute viva notes for SDLC, SRS, software requirements, testing, black box testing, white box testing, cohesion, coupling, algorithms, workflows, and EduConnect project examples.</p>
+    <div style="margin-top: 14px;">
+      <span class="pill">SDLC</span>
+      <span class="pill">SRS</span>
+      <span class="pill">Testing</span>
+      <span class="pill">Cohesion</span>
+      <span class="pill">Coupling</span>
+      <span class="pill">Algorithms</span>
+      <span class="pill">EduConnect Examples</span>
+    </div>
+    <p class="small" style="margin-top: 24px;">Prepared for EduConnect major project viva.</p>
+  </section>
+
+  <h2>1. How To Explain EduConnect</h2>
+  <p><strong>EduConnect</strong> is a role-based University ERP + LMS platform. It provides syllabus-based learning resources for students and administrative control for academic management.</p>
+  <div class="box">
+    <strong>One-line answer:</strong> EduConnect is a role-based ERP + LMS platform where students access syllabus-based notes, videos, PYQs, quizzes, and live classes; teachers upload assigned-subject content; admins manage hierarchy, approvals, users and subscriptions; and maintenance users raise academic update requests.
+  </div>
+  <p>The main problem solved by the project is that university students usually depend on scattered resources such as WhatsApp groups, Telegram channels, random PDFs, and YouTube playlists. EduConnect organizes everything according to syllabus hierarchy.</p>
+  <div class="box">
+    University -> Course -> Branch -> Scheme -> Semester -> Subject -> Unit -> Topic -> Notes / Videos / PYQs / Quizzes / Live Classes
+  </div>
+
+  <h2>2. Your Role And Team Role</h2>
+  <div class="two">
+    <div class="card">
+      <h3>Your Work</h3>
+      <ul>
+        <li>Frontend development using React and TypeScript.</li>
+        <li>Backend/API integration with Node.js and MySQL API.</li>
+        <li>Role-based dashboard and route protection.</li>
+        <li>Quiz workflow, timer, score, and leaderboard.</li>
+        <li>Subscription request and payment screenshot workflow.</li>
+        <li>Teacher/admin/student/maintenance module integration.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Teammate Work</h3>
+      <ul>
+        <li>MySQL database design.</li>
+        <li>Table creation and data insertion.</li>
+        <li>Database relationships.</li>
+        <li>Seed data for syllabus, quiz, users, content, and academic hierarchy.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>3. SDLC - Software Development Life Cycle</h2>
+  <p><strong>SDLC</strong> stands for <strong>Software Development Life Cycle</strong>. It is a systematic process used to develop software. It helps the team plan, design, develop, test, deploy, and maintain the project in an organized way.</p>
+  <table>
+    <thead><tr><th>Phase</th><th>Meaning</th><th>EduConnect Example</th></tr></thead>
+    <tbody><tr><td><strong>Requirement Analysis</strong></td><td>In this phase, the problem is identified and user requirements are collected. The team understands what the users need from the system.</td><td>In EduConnect, the problem was that university students could not easily find syllabus-based notes, videos, PYQs, quizzes, and live classes in one organized place.</td></tr><tr><td><strong>Planning</strong></td><td>In this phase, scope, timeline, technology, team responsibility, and feasibility are decided.</td><td>Frontend and backend work were handled by you, while your teammate worked on MySQL database design, tables, and data insertion.</td></tr><tr><td><strong>System Design</strong></td><td>In this phase, architecture, UI design, database design, modules, and workflows are planned.</td><td>EduConnect was designed as a role-based ERP + LMS with Student, Teacher, Admin, and Maintenance dashboards.</td></tr><tr><td><strong>Implementation</strong></td><td>In this phase, actual coding is done according to the design and requirements.</td><td>React pages, Node.js API, MySQL integration, quiz module, subscription flow, teacher upload, and admin workflows were implemented.</td></tr><tr><td><strong>Testing</strong></td><td>In this phase, the application is checked for errors, wrong outputs, broken workflows, and security issues.</td><td>Login, role access, syllabus navigation, quiz submission, subscription approval, and teacher upload were tested.</td></tr><tr><td><strong>Deployment</strong></td><td>In this phase, the application is run in the target environment so users can access it.</td><td>EduConnect runs locally using npm run api for backend, npm run dev for frontend, and MySQL as database.</td></tr><tr><td><strong>Maintenance</strong></td><td>In this phase, bugs are fixed and new features are added based on feedback.</td><td>Quiz timer was updated, UI changes were made, syllabus data was added, and subscription/teacher workflows were improved.</td></tr></tbody>
+  </table>
+  <div class="box">
+    <strong>Viva answer:</strong> SDLC is the process followed to develop software systematically. In EduConnect, we first identified the problem of scattered academic resources, then designed a role-based LMS, implemented frontend/backend/database, tested modules, and improved features based on feedback.
+  </div>
+
+  <h2>4. Software Requirement</h2>
+  <p><strong>Software requirement</strong> means what the software should do and how it should behave. Requirements are mainly divided into functional and non-functional requirements.</p>
+  <div class="two">
+    <div class="card">
+      <h3>Functional Requirements</h3>
+      <p>Functional requirements describe the actual features of the system.</p>
+      <ul>
+        <li>User can login and signup.</li>
+        <li>User gets dashboard based on role.</li>
+        <li>Student can access syllabus, notes, videos, PYQs, quizzes.</li>
+        <li>Teacher can upload assigned-subject content.</li>
+        <li>Admin can approve teachers and subscriptions.</li>
+        <li>Maintenance can raise hierarchy update requests.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Non-Functional Requirements</h3>
+      <p>Non-functional requirements describe quality and performance of the system.</p>
+      <ul>
+        <li>Role-based security.</li>
+        <li>Responsive and clean UI.</li>
+        <li>Reliable MySQL data storage.</li>
+        <li>Fast API response and data fetching.</li>
+        <li>Easy navigation for students.</li>
+        <li>Maintainable modular code.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="box">
+    <strong>Viva answer:</strong> Software requirements define what the system should do. In EduConnect, functional requirements include login, role-based dashboard, syllabus navigation, teacher upload, quiz attempt, and subscription approval. Non-functional requirements include security, usability, responsiveness, and database reliability.
+  </div>
+
+  <h2>5. SRS - Software Requirement Specification</h2>
+  <p><strong>SRS</strong> stands for <strong>Software Requirement Specification</strong>. It is a formal document that contains complete details of software requirements. It acts as a reference for developers, testers, and project evaluators.</p>
+  <p>An SRS usually contains:</p>
+  <ul>
+    <li>Project objective</li>
+    <li>Scope of the project</li>
+    <li>Users and roles</li>
+    <li>Functional requirements</li>
+    <li>Non-functional requirements</li>
+    <li>Database requirements</li>
+    <li>System workflow</li>
+    <li>Constraints and assumptions</li>
+  </ul>
+  <div class="box">
+    <strong>EduConnect SRS summary:</strong> The SRS of EduConnect defines four users: student, teacher, admin, and maintenance. Students access learning resources, teachers upload assigned-subject content, admins manage hierarchy and approvals, and maintenance users raise academic update requests.
+  </div>
+
+  <h2>6. Software Testing</h2>
+  <p><strong>Software testing</strong> is the process of checking whether the software works according to requirements. Testing helps detect bugs, wrong outputs, security issues, broken workflows, and database errors.</p>
+  <table>
+    <thead><tr><th>Testing Type</th><th>Meaning</th><th>EduConnect Example</th></tr></thead>
+    <tbody><tr><td><strong>Unit Testing</strong></td><td>Testing individual functions or components separately.</td><td>Testing quiz timer, login validation, score calculation, and role-checking logic.</td></tr><tr><td><strong>Integration Testing</strong></td><td>Testing combined modules to check if they work together.</td><td>Testing quiz submit flow where frontend sends answers, backend stores attempt, and MySQL saves student_answers.</td></tr><tr><td><strong>System Testing</strong></td><td>Testing the complete software as one system.</td><td>Testing complete flow: signup -> login -> dashboard -> syllabus -> quiz -> score -> subscription request.</td></tr><tr><td><strong>Regression Testing</strong></td><td>Checking old functionality after changes are made.</td><td>After changing quiz timer to 20 seconds, checking quiz submission and score calculation still work.</td></tr><tr><td><strong>Acceptance Testing</strong></td><td>Checking whether the system satisfies user requirements.</td><td>Confirming that students can access syllabus-based content and teachers can upload assigned-subject resources.</td></tr><tr><td><strong>Black Box Testing</strong></td><td>Testing input and output without seeing internal code.</td><td>Student login, admin approval, quiz submit, and subscription request are tested from user side.</td></tr><tr><td><strong>White Box Testing</strong></td><td>Testing internal code, conditions, logic, and paths.</td><td>RoleRoute logic, TakeQuiz timer, score calculation, and MySQL insert/update operations are checked.</td></tr></tbody>
+  </table>
+  <div class="box">
+    <strong>Viva answer:</strong> Software testing is used to check whether the application works according to requirements. In EduConnect, I tested login, role access, syllabus flow, teacher upload, quiz submission, subscription approval, and database updates.
+  </div>
+
+  <h2>7. Black Box Testing</h2>
+  <p><strong>Black box testing</strong> means testing the software without checking internal code. The tester only checks input and output. It focuses on user behavior and expected result.</p>
+  <table>
+    <thead><tr><th>Test Case</th><th>Input</th><th>Expected Output</th></tr></thead>
+    <tbody><tr><td><strong>Student login</strong></td><td>Correct email and password</td><td>Student dashboard should open</td></tr><tr><td><strong>Wrong login</strong></td><td>Wrong password</td><td>Error message should display</td></tr><tr><td><strong>Student opens admin page</strong></td><td>Student role user opens /admin/teachers</td><td>Access should be denied or redirected</td></tr><tr><td><strong>Quiz submit</strong></td><td>Student selects answers and submits</td><td>Score and correction should appear</td></tr><tr><td><strong>Subscription request</strong></td><td>Student uploads payment screenshot and transaction ID</td><td>Pending subscription request should be created</td></tr><tr><td><strong>Admin approval</strong></td><td>Admin approves payment request</td><td>Premium access should activate</td></tr><tr><td><strong>Teacher upload</strong></td><td>Teacher uploads PDF/video</td><td>Content should be stored and visible according to approval/access rules</td></tr></tbody>
+  </table>
+  <div class="box">
+    <strong>Viva answer:</strong> In black box testing, I tested EduConnect from the user side without checking code. For example, I checked whether login works, student cannot access admin pages, quiz submit shows score, and subscription request becomes pending.
+  </div>
+
+  <h2>8. White Box Testing</h2>
+  <p><strong>White box testing</strong> means testing the internal logic, code paths, conditions, functions, and database operations. The tester knows the internal structure of the software.</p>
+  <table>
+    <thead><tr><th>Code Area</th><th>What Was Tested</th></tr></thead>
+    <tbody><tr><td><code>RoleRoute.tsx</code></td><td>Checks if correct roles can access protected pages.</td></tr><tr><td><code>useUserRole.ts</code></td><td>Checks if user roles are fetched and interpreted correctly.</td></tr><tr><td><code>TakeQuiz.tsx</code></td><td>Checks timer, answer selection, auto-next, auto-submit, score calculation, and answer saving.</td></tr><tr><td><code>QuizBrowser.tsx</code></td><td>Checks quiz filtering, leaderboard ranking, and question count display.</td></tr><tr><td><code>useSubscription.ts</code></td><td>Checks free vs premium access conditions.</td></tr><tr><td><code>mysql-api.mjs</code></td><td>Checks backend CRUD logic and MySQL query execution.</td></tr><tr><td><code>client.ts</code></td><td>Checks frontend API request wrapper and auth session handling.</td></tr></tbody>
+  </table>
+  <div class="box">
+    <strong>Viva answer:</strong> In white box testing, I checked internal logic like role-based routing, quiz timer, score calculation, subscription access conditions, and database insert/update operations.
+  </div>
+
+  <h2>9. Cohesion</h2>
+  <p><strong>Cohesion</strong> means how focused a module is on one specific responsibility. High cohesion is good because it makes code easier to understand, test, and maintain.</p>
+  <table>
+    <thead><tr><th>Module / File</th><th>Focused Responsibility</th></tr></thead>
+    <tbody><tr><td><code>TakeQuiz.tsx</code></td><td>Handles only quiz attempt, timer, answer selection, score, and submit.</td></tr><tr><td><code>QuizBrowser.tsx</code></td><td>Handles quiz cards and leaderboard display.</td></tr><tr><td><code>Subscription.tsx</code></td><td>Handles student subscription request, QR/payment proof, and form submission.</td></tr><tr><td><code>AdminTeachers.tsx</code></td><td>Handles teacher approval and subject assignment.</td></tr><tr><td><code>TeacherCMS.tsx</code></td><td>Handles teacher content upload and content management.</td></tr><tr><td><code>RoleRoute.tsx</code></td><td>Handles only route protection based on role.</td></tr><tr><td><code>mysql-api.mjs</code></td><td>Handles backend MySQL API operations.</td></tr></tbody>
+  </table>
+  <div class="box">
+    <strong>Viva answer:</strong> EduConnect has high cohesion because each module has a clear responsibility. For example, TakeQuiz.tsx handles only quiz logic, while Subscription.tsx handles only subscription workflow.
+  </div>
+
+  <h2>10. Coupling</h2>
+  <p><strong>Coupling</strong> means how much one module depends on another module. Low coupling is good because changes in one module do not strongly affect other modules.</p>
+  <p>In EduConnect, coupling is controlled by using hooks and a common MySQL client wrapper. React components do not directly connect to MySQL; they call backend API through <code>src/integrations/mysql/client.ts</code>.</p>
+  <table>
+    <thead><tr><th>Coupling Type</th><th>Meaning</th><th>EduConnect Example</th></tr></thead>
+    <tbody><tr><td><strong>Data Coupling</strong></td><td>One module passes data to another.</td><td>TakeQuiz gets quizId from route and fetches quiz data.</td></tr><tr><td><strong>Control Coupling</strong></td><td>One module controls the behavior/access of another.</td><td>RoleRoute controls whether a page is opened or redirected based on user role.</td></tr><tr><td><strong>Stamp Coupling</strong></td><td>A full object is passed when only some fields are needed.</td><td>Some components pass full quiz or subject objects.</td></tr><tr><td><strong>Common Coupling</strong></td><td>Multiple modules depend on shared global/common data.</td><td>Auth session is stored locally and used across components.</td></tr><tr><td><strong>Database Coupling</strong></td><td>Backend depends on database tables and schema.</td><td>mysql-api.mjs depends on MySQL tables such as users, content, quizzes, and subscriptions.</td></tr></tbody>
+  </table>
+  <div class="box">
+    <strong>Viva answer:</strong> I tried to keep coupling low by using reusable hooks and a common MySQL client wrapper. React components do not directly connect to MySQL. They call the backend API through the client wrapper.
+  </div>
+
+  <h2>11. Algorithms And Logic Used</h2>
+  <p>EduConnect does not use heavy DSA algorithms like graph shortest path or sorting libraries, but it uses important application-level algorithms and workflows.</p>
+  <table>
+    <thead><tr><th>Algorithm / Logic</th><th>Use In EduConnect</th></tr></thead>
+    <tbody><tr><td><strong>Role Checking Algorithm</strong></td><td>Gets logged-in user, fetches role from user_roles table, and redirects user to allowed dashboard/page.</td></tr><tr><td><strong>Quiz Scoring Algorithm</strong></td><td>Loops through questions, compares selected option with correct option, adds marks, and saves correct/wrong status.</td></tr><tr><td><strong>Quiz Timer Algorithm</strong></td><td>Each question gets 20 seconds. On timeout it moves to next question, and on last question it auto-submits.</td></tr><tr><td><strong>Subscription Access Algorithm</strong></td><td>Checks active premium subscription for selected semester. If active, full content is unlocked; otherwise only free preview is shown.</td></tr><tr><td><strong>Leaderboard Algorithm</strong></td><td>Fetches completed attempts, groups by student, calculates percentage, sorts students in descending order, and displays rank.</td></tr><tr><td><strong>Search/Filter Algorithm</strong></td><td>Filters quizzes, students, subjects, and content based on semester, level, role, or search keyword.</td></tr><tr><td><strong>Hierarchy Traversal</strong></td><td>Displays academic data step-by-step: University -> Course -> Branch -> Scheme -> Semester -> Subject -> Unit -> Topic.</td></tr></tbody>
+  </table>
+
+  <h3>Quiz Scoring Algorithm</h3>
+  <pre>For each question:
+  get selected option
+  get correct option
+  if selected option == correct option:
+      add marks
+      save answer as correct
+  else:
+      save answer as wrong
+Final score = total correct marks</pre>
+
+  <h3>Role Checking Algorithm</h3>
+  <pre>Get logged-in user
+Get user role from user_roles table
+If admin:
+    allow admin dashboard
+Else if teacher:
+    allow teacher dashboard
+Else if student:
+    allow student dashboard
+Else if maintenance:
+    allow maintenance dashboard</pre>
+
+  <h3>Subscription Access Algorithm</h3>
+  <pre>If student has active premium subscription for semester:
+    show full content
+Else:
+    show free preview content only</pre>
+
+  <h3>Leaderboard Algorithm</h3>
+  <pre>Fetch completed quiz attempts
+Group attempts by student
+Calculate percentage for each student
+Sort students by highest percentage
+Display rank</pre>
+
+  <h2>12. Major Files And Responsibilities</h2>
+  <table>
+    <thead><tr><th>File</th><th>Responsibility</th></tr></thead>
+    <tbody><tr><td><code>src/App.tsx</code></td><td>Defines all frontend routes and connects pages with URLs.</td></tr><tr><td><code>src/pages/Auth.tsx</code></td><td>Handles login, signup, profile data, and role selection.</td></tr><tr><td><code>src/components/auth/RoleRoute.tsx</code></td><td>Protects pages based on user role.</td></tr><tr><td><code>src/hooks/useUserRole.ts</code></td><td>Fetches current user and user roles.</td></tr><tr><td><code>src/pages/Dashboard.tsx</code></td><td>Shows dashboard according to role: admin, teacher, student, or maintenance.</td></tr><tr><td><code>src/pages/Syllabus.tsx</code></td><td>Handles syllabus hierarchy navigation and subject selection.</td></tr><tr><td><code>src/components/syllabus/CoursePlayer.tsx</code></td><td>Displays topic-wise notes and video learning player.</td></tr><tr><td><code>src/pages/Quizzes.tsx</code></td><td>Main quiz page wrapper.</td></tr><tr><td><code>src/components/quiz/QuizBrowser.tsx</code></td><td>Shows quiz cards, filters, and leaderboard.</td></tr><tr><td><code>src/components/quiz/TakeQuiz.tsx</code></td><td>Handles quiz attempt, timer, options, submit, score, and corrections.</td></tr><tr><td><code>src/pages/Subscription.tsx</code></td><td>Handles premium plan, QR payment, screenshot upload, and subscription request.</td></tr><tr><td><code>src/components/admin/AdminSubscriptionManager.tsx</code></td><td>Admin verifies payment screenshots and approves subscriptions.</td></tr><tr><td><code>src/pages/AdminHierarchy.tsx</code></td><td>Admin/maintenance academic hierarchy management.</td></tr><tr><td><code>src/pages/AdminTeachers.tsx</code></td><td>Teacher approval and teacher-subject assignment.</td></tr><tr><td><code>src/pages/AdminStudents.tsx</code></td><td>Student records and profile information.</td></tr><tr><td><code>src/pages/AdminContentApprovals.tsx</code></td><td>Admin content approval workflow.</td></tr><tr><td><code>src/pages/MaintenanceRequests.tsx</code></td><td>Maintenance academic change request form.</td></tr><tr><td><code>src/pages/MaintenanceDashboard.tsx</code></td><td>Maintenance request tracking and status.</td></tr><tr><td><code>src/pages/TeacherCMS.tsx</code></td><td>Teacher content upload: notes, videos, resources.</td></tr><tr><td><code>src/pages/TeacherQuizzes.tsx</code></td><td>Teacher quiz creation and management.</td></tr><tr><td><code>server/mysql-api.mjs</code></td><td>Node.js backend API that connects React frontend with MySQL database.</td></tr><tr><td><code>src/integrations/mysql/client.ts</code></td><td>Frontend MySQL API client wrapper used by React components.</td></tr><tr><td><code>server/*.sql</code></td><td>SQL seed/data files for syllabus, quiz, PYQ, and demo data.</td></tr><tr><td><code>.env</code></td><td>Environment configuration such as API URL and database-related values.</td></tr></tbody>
+  </table>
+
+  <h2>13. Database Tables To Remember</h2>
+  <table>
+    <thead><tr><th>Table</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>app_users</code></td><td>Stores login email and password.</td></tr>
+      <tr><td><code>profiles</code></td><td>Stores user details such as full name, phone, gender, semester.</td></tr>
+      <tr><td><code>user_roles</code></td><td>Stores role: student, teacher, admin, maintenance.</td></tr>
+      <tr><td><code>universities, courses, branches, schemes, subjects, units, syllabus_topics</code></td><td>Stores academic hierarchy.</td></tr>
+      <tr><td><code>content</code></td><td>Stores notes, videos, PDFs and approval status.</td></tr>
+      <tr><td><code>teacher_assignments</code></td><td>Stores subject-wise teacher mapping.</td></tr>
+      <tr><td><code>quizzes, questions, options</code></td><td>Stores quiz structure.</td></tr>
+      <tr><td><code>quiz_attempts, student_answers</code></td><td>Stores student quiz results and selected answers.</td></tr>
+      <tr><td><code>subscriptions, payments</code></td><td>Stores premium plan and payment proof.</td></tr>
+      <tr><td><code>hierarchy_requests</code></td><td>Stores maintenance requests for admin approval.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>14. Final Viva Answer</h2>
+  <div class="box">
+    EduConnect is a role-based ERP + LMS platform developed using React, TypeScript, Node.js, and MySQL. The system has four roles: student, teacher, admin, and maintenance. Students access syllabus-based notes, videos, PYQs, quizzes, and live classes. Teachers upload content only for assigned subjects. Admin manages academic hierarchy, teacher approval, subscriptions, and content approvals. Maintenance users raise academic update requests. The project follows SDLC phases like requirement analysis, design, implementation, testing, and maintenance. Testing includes black box testing for user workflows and white box testing for internal logic like role checking, quiz timer, score calculation, and database operations.
+  </div>
+
+  <h2>15. Last Minute Tips</h2>
+  <ul>
+    <li>Always answer definition first, then give EduConnect example.</li>
+    <li>If asked about testing, mention both user-side testing and code-side testing.</li>
+    <li>If asked about database, mention normalized tables and relationships.</li>
+    <li>If asked about your contribution, say frontend + backend/API integration.</li>
+    <li>If asked about teammate contribution, say MySQL schema, relationships and data insertion.</li>
+  </ul>
+</body>
+</html>
