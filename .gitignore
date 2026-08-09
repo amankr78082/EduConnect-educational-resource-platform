@@ -17,6 +17,10 @@ dist-ssr
 tmp
 *.local
 
+# Local database exports can contain user data and credentials.
+*_db_export.sql
+*.dump.sql
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
