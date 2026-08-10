@@ -1,73 +1,129 @@
-# Welcome to your Lovable project
+# EduConnect - A Comprehensive Educational Resource Platform
 
-## Project info
+EduConnect is a student-friendly university learning platform that centralizes academic resources such as syllabus-indexed notes, video lectures, previous year papers, quizzes, live classes, teacher interaction, and subscription-based learning access.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Project Overview
 
-## How can I edit this code?
+The platform is designed for students, teachers, administrators, and maintenance users. It organizes academic content through a structured hierarchy:
 
-There are several ways of editing your application.
+```text
+University -> Course -> Branch -> Scheme -> Semester -> Subject -> Unit -> Topic
+```
 
-**Use Lovable**
+Students can access learning resources topic-wise, teachers can upload academic content, and admins can manage hierarchy, users, approvals, subscriptions, and analytics.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Key Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- Role-based dashboards for students, teachers, admins, and maintenance users
+- University/course/semester/subject hierarchy management
+- Syllabus-based notes, videos, PYQs, units, and topics
+- Quiz module with timer, scoring, attempts, and leaderboard
+- Teacher content upload workflow
+- Admin approval and subscription management
+- Payment screenshot based subscription verification
+- Live class link management
+- Real-time style activity updates through backend APIs
 
-**Use your preferred IDE**
+## Technology Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Frontend
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- shadcn/ui
+- Framer Motion
+- React Router
+- TanStack Query
 
-Follow these steps:
+### Backend
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- Node.js
+- MySQL2
+- REST-style API endpoints
+- Role-based access logic
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Database
 
-# Step 3: Install the necessary dependencies.
-npm i
+- MySQL
+- Structured tables for users, profiles, roles, academic hierarchy, content, quizzes, payments, subscriptions, live sessions, and audit logs
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+## Project Structure
+
+```text
+src/
+  components/      Reusable UI and feature components
+  pages/           Route-level pages and dashboards
+  hooks/           Custom React hooks
+  integrations/    API client integration
+  services/        API helper services
+
+server/
+  mysql-api.mjs    Node.js backend API
+  seed-*.sql       MySQL seed files for syllabus, quizzes, content, and PYQs
+
+public/
+  notes/           Public note PDFs
+  papers/          Previous year papers
+  docs/            Diagrams and report assets
+```
+
+## Local Setup
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Create a `.env` file using `.env.example` as reference:
+
+```env
+VITE_API_BASE_URL="http://localhost:3001/api"
+API_PORT="3001"
+FRONTEND_ORIGIN="http://localhost:8080"
+MYSQL_HOST="localhost"
+MYSQL_PORT="3306"
+MYSQL_USER="root"
+MYSQL_PASSWORD="your-password"
+MYSQL_DATABASE="educonnect_db"
+```
+
+Run backend API:
+
+```bash
+npm run api
+```
+
+Run frontend:
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Build frontend:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm run build
+```
 
-**Use GitHub Codespaces**
+## Deployment Plan
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Recommended free deployment setup:
 
-## What technologies are used for this project?
+```text
+Frontend: Vercel
+Backend: Render
+Database: Aiven MySQL
+```
 
-This project is built with:
+Deployment flow:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```text
+React Frontend -> Node.js API -> MySQL Database
+```
 
-## How can I deploy this project?
+## Author
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Aman Kumar
